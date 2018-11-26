@@ -8,13 +8,12 @@ const puppeteer = require('puppeteer');
     const performanceTiming = JSON.parse(
         await page.evaluate(() => JSON.stringify(window.performance.timing))
     );
-
     const timings = {};
     Object.keys(performanceTiming).map((key, index) => {
             timings[key] = performanceTiming[key] - performanceTiming.navigationStart;
     });
     console.log('performanceTiming', performanceTiming)
-    console.log('difference with navigation start', timings);
+    console.log('difference with navigation start(navigationStart)', timings);
 
     await browser.close();
 })();
